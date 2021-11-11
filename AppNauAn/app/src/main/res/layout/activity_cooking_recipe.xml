@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark">
+
+        <!--        setContentScrim(Drawable drawable)-->
+        <!--        Đặt có thể kéo để sử dụng cho tập lệnh nội dung từ các tài nguyên
+        Trả về có thể vẽ được sử dụng cho tập lệnh nền trước..-->
+
+        <!--        app:layout_scrollFlags định nghĩa hành vi của AppBarLayout và các View con trong nó-->
+
+        <!--       "scroll" : Flag scroll này cho phép NestedScrollView báo hiệu cho-->
+        <!--        CollapsingToolbar rằng nó đang trong thái scrolling.
+                    Nếu NestedScrollView được cuộn lên thì collapsingToolbarLayout sẽ thu lại
+                    Ngược lại nếu cuộn xuống thì nó mở ra-->
+
+        <!--        exitUntilCollapsed|snap được kết hợp với scroll với dấu "|" -->
+        <!--        scroll|exitUntilCollapsed: Flags này sẽ giữ cho toolbar -->
+        <!--        luôn hiển thị ở trên top và sẽ không bị ẩn khi scroll-->
+
+        <!--        scroll|snap: snap sẽ luôn làm cho CollapsingToolbar được mở rộng-->
+        <!--        hay thu lại dựa trên trạng thái hiện tại của CollapsingToolbar.-->
+
+        <!--        expandedTitleMarginStart đặt lề bắt đầu cho tiêu đề mở rộng-->
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingtoolbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="@color/colorPrimary"
+            app:expandedTitleMarginStart="15dp"
+            app:expandedTitleMarginBottom="20dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <!--            Scale Center Crop là căn chỉnh tâm của hình ảnh với tâm của khung nhìn-->
+            <!--            android:contentDescription="@string/app_name" đặt nhãn nội dung cho image-->
+
+            <!--            app:layout_collapseMode="parallax", tạo ra hiệu ứng thay đổi điểm nhìn khi vuốt-->
+            <ImageView
+                android:id="@+id/imageVieww"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax">
+            </ImageView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/title_background"></View>
+
+            <!--            Tạo toolbar để có thể hiển thị toolbar bên dưới và trên sau khi chồng chéo-->
+
+            <!--            app:layout_collapseMode="pin" nó sẽ không mất đi sau khi vuốt ngược lên-->
+
+            <!--            android:contentInsetStart	Nội dung tối thiểu cho lượt xem nội dung trong một thanh.-->
+
+            <!--            android:contentInsetStartWithNavigation	Nội dung tối thiểu cho các chế độ xem nội dung
+            trong thanh khi có nút điều hướng, chẳng hạn như nút Lên.-->
+
+            <!--            android:popupTheme	Tham chiếu đến một chủ đề sẽ được sử dụng để thổi phồng
+            cửa sổ bật lên được hiển thị bởi các tiện ích trên thanh công cụ.-->
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:contentInsetStart="0dp"
+                app:contentInsetStartWithNavigation="0dp"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light">
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!--    NestedScrollView giống scrollview nhưng hỗ trợ cuộn lồng nhau-->
+
+    <!--    android:overScrollMode="never" chọn không đăng xuất tệp xml-->
+
+    <!--    app:layout_behavior nó sẽ định nghĩa ứng xử của View bên trong CoordinatorLayout-->
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:text="Công thức nấu ăn"
+                android:textColor="@color/colorPromaryDark"
+                android:textSize="18sp"
+                android:textStyle="bold">
+            </TextView>
+            <TextView
+                android:id="@+id/textviewCongThuc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Món ăn"
+                android:textColor="@color/black"
+                android:textSize="16sp">
+            </TextView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:src="@drawable/ic_favorite"-->
+    <!--        app:layout_anchor="@id/appbarLayout"-->
+    <!--        app:layout_anchorGravity="bottom|end|right"-->
+    <!--        android:layout_marginEnd="25dp"-->
+    <!--        app:maxImageSize="28dp"-->
+    <!--        android:tint="@color/white">-->
+    <!--    </com.google.android.material.floatingactionbutton.FloatingActionButton>-->
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
